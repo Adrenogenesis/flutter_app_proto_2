@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'fetch.dart';
+import 'menu.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(Home());
@@ -30,15 +32,14 @@ class Home extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
       appBar: AppBar(
-        leading: Icon(
-          Icons.menu,
-        ),
-        title: Text('Page title'),
+
+        title: Text('Protonwebmaster'),
         actions: [
           IconButton(
             icon: const Icon(
-              Icons.favorite,
+              Icons.web,
             ),
             onPressed: () {
               Navigator.push(
@@ -60,22 +61,22 @@ class MyHomePage extends StatelessWidget {
             },
           ),
         ],
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.blueAccent,
       ),
       body: ListView(
         children: [
           new UserAccountsDrawerHeader(
-            accountName: new Text("Knowledge Burst"),
+            accountName: new Text("Activateur France Num"),
             accountEmail: null,
             decoration: new BoxDecoration(
                 image: new DecorationImage(
                     fit: BoxFit.fill,
-                    image: new NetworkImage("")
+                    image: new NetworkImage("https://dev.fredericbrodar.com/assets/img/protonweb.jpg")
                 )
             ),
           ),
           new ListTile(
-            title: new Text("Economics"),
+            title: new Text("Produits"),
             trailing: new Icon(Icons.arrow_upward),
             onTap: (){
               Navigator.push(
@@ -122,13 +123,25 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                Image.asset('assets/logo2.png'),
+                GestureDetector(
+                  onTap: _launchURL,
+                  child: Image.asset('assets/logo2.png'),
+                )
               ],
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+_launchURL() async {
+  const url = 'https://flutter.io';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
 
@@ -188,3 +201,4 @@ class SecondScreen extends StatelessWidget {
     );
   }
 }
+
