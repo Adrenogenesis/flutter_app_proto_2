@@ -57,6 +57,7 @@ class _MyAppState extends State<MyAppX> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Votre site internet évolutif',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -65,8 +66,8 @@ class _MyAppState extends State<MyAppX> {
         appBar: AppBar(
           title: Text('Votre site internet évolutif'),
         ),
-        body: Center(
-          child: FutureBuilder<Album>(
+         body: Center(
+           child: FutureBuilder<Album>(
             future: futureAlbum,
             builder: (context, snapshot) {
               if (snapshot.hasData) {

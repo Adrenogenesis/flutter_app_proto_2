@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'container.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -20,17 +21,22 @@ class NavDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.input),
-            title: Text('Welcome'),
-            onTap: () => {},
+            title: Text('Bienvenue'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Challenge()),
+              ),
+            },
           ),
           ListTile(
             leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
+            title: Text('Parcours'),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: Icon(Icons.settings),
-            title: Text('Settings'),
+            title: Text('Configuration'),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
@@ -40,7 +46,7 @@ class NavDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
-            title: Text('Logout'),
+            title: Text('Deconnexion'),
             onTap: () => {Navigator.of(context).pop()},
           ),
         ],
